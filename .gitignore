@@ -1,0 +1,6 @@
+node_modules/
+public/vendor/
+npm-debug.log
+.bowerrc
+.swp
+.swo
