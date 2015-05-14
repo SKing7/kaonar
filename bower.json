@@ -1,0 +1,21 @@
+{
+  "name": "kaonar",
+  "version": "0.0.0",
+  "homepage": "https://github.com/SKing7/kaonar",
+  "authors": [
+    "刘哲 <sking.pt@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/js/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "react": "~0.13.3"
+  }
+}
