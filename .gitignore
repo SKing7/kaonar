@@ -3,6 +3,5 @@ build/
 public/build/
 public/vendor/
 npm-debug.log
-.bowerrc
 *.swp
 *.swo
