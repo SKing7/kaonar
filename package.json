@@ -20,7 +20,8 @@
     "mongoose-softdelete": "~0.2.5",
     "mongoose-timestamp": "~0.4.0",
     "glob": "~5.0.6",
-    "react": "~0.13.3"
+    "react": "~0.13.3",
+    "body-parser": "~1.12.4"
   },
   "devDependencies": {
     "node-libs-browser": "~0.5.0",
