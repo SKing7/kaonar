@@ -11,4 +11,4 @@ var SignupForm = React.createClass({
     );
   }
 });
-exports = SignupForm;
+module.exports = SignupForm;

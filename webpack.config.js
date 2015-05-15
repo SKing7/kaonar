@@ -24,5 +24,10 @@ module.exports = {
             { test: /\.jsx$/, loader: "jsx-loader?harmony" },
             { test: /\.js$/, loader: "jsx-loader?harmony" },
         ]
-    }
+    },
+    externals: {
+        react: 'React',
+        jquery: "jQuery"
+    },
+    devtool: '#source-map',
 };

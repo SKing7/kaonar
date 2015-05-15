@@ -6,4 +6,3 @@ React.render(
   <SignupForm/>,
   document.body
 );
-
