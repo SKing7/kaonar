@@ -65,7 +65,7 @@ module.exports = function (db) {
 
     // Setting the app router and static folder
     //app.use(favicon(path.resolve('./app/favicon.ico')));
-    app.use(express.static(path.resolve('./public')));
+    app.use(express.static(path.resolve('./public/')));
 
     return app;
 };

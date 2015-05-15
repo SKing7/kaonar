@@ -1,6 +1,8 @@
 node_modules/
+build/
+public/build/
 public/vendor/
 npm-debug.log
 .bowerrc
-.swp
-.swo
+*.swp
+*.swo

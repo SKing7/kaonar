@@ -1,5 +1,8 @@
-// tutorial1.js
-var CommentBox = React.createClass({
+require('./base.css');
+
+var React = require('react');
+
+var SignupForm = React.createClass({
   render: function() {
     return (
       <div className="commentBox">
@@ -8,7 +11,4 @@ var CommentBox = React.createClass({
     );
   }
 });
-React.render(
-  <CommentBox />,
-  document.getElementById('content')
-);
+exports = SignupForm;
