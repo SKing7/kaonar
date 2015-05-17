@@ -2,8 +2,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        'compoment/signup': ["./public/component/signup/index.js"],
-        'user/signup': ["./public/page/user/signup.js"],
+        'component/signup': ["./public/component/signup/index.js"],
     },
     resolve: {
         alias: {
