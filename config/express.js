@@ -27,7 +27,7 @@ module.exports = function (db) {
     // Should be placed before express.static
     app.use(compress({
         filter: function (req, res) {
-            return (/json|text|javascript|css|html/).test(res.getHeader('Content-Type'));
+            return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
         }
     }));
 
@@ -42,11 +42,6 @@ module.exports = function (db) {
     app.engine('hbs', handlebars);
     app.set('view engine', 'hbs');
     app.set('views', path.resolve('./app/views'));
-
-    _.forEach(glob('./app/routes/*.js',  { sync: true }), function (filePath) {
-        require(path.resolve(filePath))(app);
-        logger.info('load router file: %s', filePath);
-    });
 
     // environment sensible configurations
     switch (process.env.NODE_ENV) {
@@ -70,7 +65,36 @@ module.exports = function (db) {
 
     // Setting the app router and static folder
     //app.use(favicon(path.resolve('./app/favicon.ico')));
-    app.use(express.static(path.resolve('./public/')));
+    app.use(express.static(path.resolve('./public')));
 
+    // globals: request, config, controller, page
+    app.use(function (req, res, next) {
+        var components = _.filter(req.path.split('/'));
+        if (components.length === 0) {
+            components = ['index', 'index'];
+        } else if (components.length === 1) {
+            components.push('index');
+        }
+        req.page = components.join('-');
+        req.controller = components[0];
+    
+        app.locals.request = req;
+        app.locals.config = config;
+    
+        next();
+    });
+
+    _.forEach(glob('./app/routes/*.js',  { sync: true }), function (filePath) {
+        require(path.resolve(filePath))(app);
+        logger.info('load router file: %s', filePath);
+    });
+
+
+    app.use(function (req, res) {
+        res.render('404', {
+            url: req.originalUrl,
+            messages: 'Not Found'
+        });
+    });
     return app;
 };

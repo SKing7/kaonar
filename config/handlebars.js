@@ -12,9 +12,8 @@ var path = require('path'),
 //require('../app/helpers/handlebars');
 
 module.exports = expresshbs.express4({
-    handlebars: handlebars,
-    blockHelperName: 'block',
-    contentHelperName: 'append',
+    contentHelperName: 'fill',
+    beautify: true,
     partialsDir: [ path.resolve('./app/views/partials/') ],
     layoutsDir: path.resolve('./app/views/layouts/'),
     defaultLayout: path.resolve('./app/views/layouts/default.hbs'),

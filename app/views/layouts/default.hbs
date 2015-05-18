@@ -11,11 +11,11 @@
     <base href="/" target="_blank">
     <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" />
     </head>
-    <body>
+    <body class="pg-{{request.controller}} pg-{{request.page}}">
         <div class="container J-main-container">
             {{{body}}}
         </div>
         {{> corejs}}
-        {{{block pageScripts}}}
+        {{{block "pageScripts"}}}
     </body>
 </html>
