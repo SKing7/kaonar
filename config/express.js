@@ -12,6 +12,8 @@ var express = require('express'),
     methodOverride = require('method-override'),
     config = require('./config'),
     logger = console,
+    hbs = require('express-hbs'),
+    handlebars =  require('./handlebars'),
     path = require('path'),
     glob = require('glob'),
     util = require('util'),
@@ -36,13 +38,16 @@ module.exports = function (db) {
     // Showing stack errors
     app.set('showStackError', true);
 
-    app.set('view engine', 'ejs');
+    //handlebars
+    app.engine('hbs', handlebars);
+    app.set('view engine', 'hbs');
     app.set('views', path.resolve('./app/views'));
 
     _.forEach(glob('./app/routes/*.js',  { sync: true }), function (filePath) {
         require(path.resolve(filePath))(app);
         logger.info('load router file: %s', filePath);
     });
+
     // environment sensible configurations
     switch (process.env.NODE_ENV) {
     case 'development':
