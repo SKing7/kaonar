@@ -22,13 +22,18 @@
     "glob": "~5.0.6",
     "react": "~0.13.3",
     "body-parser": "~1.12.4",
-    "zepto": "0.0.4"
+    "zepto": "0.0.4",
+    "react-tools": "~0.13.3"
   },
   "devDependencies": {
     "node-libs-browser": "~0.5.0",
     "webpack": "~1.9.5",
     "style-loader": "~0.12.2",
     "jsx-loader": "~0.13.2",
-    "css-loader": "~0.12.0"
+    "css-loader": "~0.12.0",
+    "react-tools": "~0.13.3",
+    "gulp-sourcemaps": "~1.5.2",
+    "gulp-react": "~3.0.1",
+    "gulp": "~3.8.11"
   }
 }
