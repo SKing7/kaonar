@@ -3,7 +3,15 @@ var watch = require('gulp-watch');
 var sourcemaps = require('gulp-sourcemaps');
 var react = require('gulp-react');
 var nodemon = require('gulp-nodemon');
- 
+var chokidar = require('chokidar');
+var winston = require('winston');
+
+winston.remove(winston.transports.Console);
+winston.add(winston.transports.Console, {
+    colorize: true,
+});
+var log = winston.log;
+
 var publicSrc = './public/build';
 var jsxSrcPath = 'public/**/*.jsx';
 
@@ -24,5 +32,14 @@ gulp.task('startServer', function () {
     env: { 'NODE_ENV': 'development' }
   })
 })
+var watcher = chokidar.watch([jsxSrcPath].join(','), {
+    ignored: /[\/\\]\./,
+    persistent: true
+});
+watcher
+  .on('add',    function(path)  { log('info', path + 'has been added'); })
+  .on('change', function(path)  { log('info', path + 'has been changed'); })
+  .on('error',  function(error) { log('error', error); })
+
 gulp.task('dev', ['build', 'startServer'], function () {});
 gulp.task('default', ['build', 'startServer'], function () {});
